@@ -145,20 +145,20 @@ async def on_ready():
                 extension, type(e).__name__, e))
     if not hasattr(bot, "uptime"):
         bot.uptime = int(time.perf_counter())
-    # users = len(set(bot.get_all_members()))
+     users = len(set(bot.get_all_members()))
     guilds = len(bot.guilds)
-    # channels = len([c for c in bot.get_all_channels()])
+     channels = len([c for c in bot.get_all_channels()])
     shard_count = bot.shard_count
-    # check_folders()
-    # check_files()
+     check_folders()
+     check_files()
     await bot.change_presence(game=discord.Game(name='SUPPORT ME: franc.ist/2sqpMkz'))
     await bot.update()
     logger.info('Logged in as {}'.format(str(bot.user)))
     logger.info("Connected to:")
     logger.info("{} servers ({} shards)".format(
         guilds, shard_count))
-    # logger.info("{} channels".format(channels))
-    # logger.info("{} users\n".format(users))
+     logger.info("{} channels".format(channels))
+     logger.info("{} users\n".format(users))
     statsd.increment('bot.restarts', 1)
 
 
@@ -173,8 +173,8 @@ async def update():
     Oliy_key = ''
 
     payload = json.dumps({
-        # 'shard_id': guild.shard_id,
-        # 'shard_count': bot.shard_count,
+         'shard_id': guild.shard_id,
+         'shard_count': bot.shard_count,
         'server_count': len(bot.guilds)
     })
 
@@ -209,8 +209,8 @@ async def update():
 
 # carbonitex
     payload = {
-        # 'shard_id': guild.shard_id,
-        # 'shard_count': bot.shard_count,
+         'shard_id': guild.shard_id,
+         'shard_count': bot.shard_count,
         'guild_count': len(bot.guilds)
     }
 
@@ -248,9 +248,9 @@ def main():
         logger.info('Connecting to gateway...')
         yield from bot.connect()
         logger.info('Connected to gateway')
-        # logger.info('Logging in and connecting...')
-        # yield from bot.start('')
-        # logger.info('Logged in + connected')
+         logger.info('Logging in and connecting...')
+         yield from bot.start('')
+         logger.info('Logged in + connected')
     except TypeError as e:
         logger.warning(e)
         msg = ("\nYou are using an outdated discord.py.\n"
