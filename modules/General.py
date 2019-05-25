@@ -59,7 +59,7 @@ class General:
         """Shows the changelog of the bot"""
         latest_change = "New Commands:"
         latest_change += "\n- `yt latest`"
-        # latest_change += "\n- `yt"
+         latest_change += "\n- `yt"
         latest_change += "\n- Backend changes for connections to 3rd party services (e.g. discordbots.org)"
         latest_change += "\n- Updated to work with [discord.py 1.0.0](http://discordpy.readthedocs.io/en/rewrite/)"
         prev_change = "Initial rewrite of bot"
@@ -125,7 +125,7 @@ class General:
         users = str(len([m for m in set(self.bot.get_all_members())]))
 
         channels = str(len([m for m in set(self.bot.get_all_channels())]))
-        # await msg.edit("Getting uptime...")
+         await msg.edit("Getting uptime...")
         up = abs(self.bot.uptime - int(time.perf_counter()))
         up = str(datetime.timedelta(seconds=up))
 
@@ -135,7 +135,7 @@ class General:
         data.add_field(name="Shard ID", value=ctx.message.guild.shard_id)
         data.add_field(name="Total Shards", value=shards)
         data.add_field(name="Total Servers", value=guilds)
-        # data.add_field(name="Servers (total)", value=total_guilds)
+         data.add_field(name="Servers (total)", value=total_guilds)
         data.add_field(name="Users", value=users)
         data.add_field(name="Channels", value=channels)
         data.add_field(name="Uptime", value="{}".format(up))
